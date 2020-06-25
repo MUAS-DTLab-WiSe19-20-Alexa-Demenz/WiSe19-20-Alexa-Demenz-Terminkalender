@@ -1,0 +1,800 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "alzheimer kalendar",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": [
+                        "Sind sie sicher dass der befehl so lautet",
+                        "Dieser Befehl ist mir nicht bekannt"
+                    ]
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": [
+                        "egal",
+                        "wurscht",
+                        "habs vergessen",
+                        "vergiss es"
+                    ]
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": [
+                        "ich brauche hilfe",
+                        "ich brauch hilfe",
+                        "was muss ich tun",
+                        "wie geht das",
+                        "hilfe"
+                    ]
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": [
+                        "schleich di",
+                        "beende a k k",
+                        "schalte a k k aus",
+                        "stop a k k",
+                        "schalt dich aus"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "SubmitAppointmentIntent",
+                    "slots": [
+                        {
+                            "name": "Subject",
+                            "type": "AppointmentTypes",
+                            "samples": [
+                                "Ich geh zum {Subject}",
+                                "Ich geh {Subject}",
+                                "Ich gehe {Subject}",
+                                "{Subject}",
+                                "Ich gehe zum {Subject} "
+                            ]
+                        },
+                        {
+                            "name": "Date",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                "Der Termin ist {Date} ",
+                                "Der Termin ist am {Date} ",
+                                "{Date} ",
+                                "Am {Date} "
+                            ]
+                        },
+                        {
+                            "name": "Time",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "City",
+                            "type": "AMAZON.DE_CITY"
+                        },
+                        {
+                            "name": "Street",
+                            "type": "AMAZON.StreetName"
+                        },
+                        {
+                            "name": "Person",
+                            "type": "PersonType"
+                        }
+                    ],
+                    "samples": [
+                        "Trage einen Termin am {Date} um {Time} ein",
+                        "Trage einen Termin am {Date} ein ",
+                        "Trage einen Termin zum {Subject} ein",
+                        "Trage einen Termin ein",
+                        "Erstelle einen Termin bei {Person}",
+                        "Mache einen Termin bei {Person}",
+                        "Mache einen Termin zum {Subject}",
+                        "Erstelle einen Termin zum {Subject} ",
+                        "Erstelle einen Termin am {Date} ",
+                        "Mache einen Termin am {Date} ",
+                        "Mache einen Termin",
+                        "Erstelle einen Termin",
+                        "Mache Termin {Subject} Stadt {City} Straße {Street} Person {Person}",
+                        "Mache Termin {Subject} in {City} Straße {Street} von {Person}",
+                        "Mache Termin {Subject} in {City} von {Person}",
+                        "Mache Termin {Subject} am  {Date} um {Time} von {Person}",
+                        "Mache Termin {Subject} Stadt {City} Straße {Street} Datum {Date} Zeit {Time} Person {Person}",
+                        "Mache Termin {Subject} Stadt {City} Person {Person}",
+                        "Mache Termin {Subject}  Datum {Date} Zeit {Time} Person {Person}",
+                        "Mache Termin {Subject} Datum {Date} Zeit {Time}  Stadt {City} Straße {Street}  Person {Person}",
+                        "Mache Termin {Subject} am  {Date} um {Time}  in  {City} Straße {Street}  von {Person}",
+                        "Mache Termin {Subject} in  {City} Straße {Street} am {Date} um {Time} von  {Person}"
+                    ]
+                },
+                {
+                    "name": "HandleAppointmentIntent",
+                    "slots": [
+                        {
+                            "name": "day",
+                            "type": "DayBeforOrAfter"
+                        }
+                    ],
+                    "samples": [
+                        "Was ist mein nächster Termin",
+                        "Sag mir alle Termine {day}",
+                        "Sag mir alle meine {day} Termine",
+                        "Welche Termine habe ich {day} ",
+                        "Gib mir alle meine {day} Termine aus"
+                    ]
+                },
+                {
+                    "name": "ReminderHandler",
+                    "slots": [
+                        {
+                            "name": "Appointment",
+                            "type": "AppointmentTypes"
+                        },
+                        {
+                            "name": "TimeIntervall",
+                            "type": "AMAZON.DURATION"
+                        },
+                        {
+                            "name": "oneSubject",
+                            "type": "AppointmentTypes"
+                        }
+                    ],
+                    "samples": [
+                        "Erinner mich bitte an Notizen von {oneSubject} {TimeIntervall} bevor ich losgehe",
+                        "Erinner mich bitte {TimeIntervall} zuvor an {Appointment}"
+                    ]
+                },
+                {
+                    "name": "CreateNoteIntent",
+                    "slots": [
+                        {
+                            "name": "Note",
+                            "type": "AMAZON.SearchQuery",
+                            "samples": [
+                                "{Note}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Notiz",
+                        "Erstell Anmerkung",
+                        "Mach eine Notiz",
+                        "Erstell eine Notiz"
+                    ]
+                },
+                {
+                    "name": "DeleteAppointmentHandler",
+                    "slots": [
+                        {
+                            "name": "SubjectToDelete",
+                            "type": "AppointmentTypes",
+                            "samples": [
+                                "Lösche den Termin zum {SubjectToDelete} ",
+                                "{SubjectToDelete}"
+                            ]
+                        },
+                        {
+                            "name": "DateToDelete",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                "Der Termin ist am {DateToDelete}",
+                                "am {DateToDelete}",
+                                "{DateToDelete}"
+                            ]
+                        },
+                        {
+                            "name": "TimeToDelete",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "PersonToDelete",
+                            "type": "PersonType"
+                        },
+                        {
+                            "name": "CityToDelete",
+                            "type": "AMAZON.DE_CITY"
+                        },
+                        {
+                            "name": "StreetToDelete",
+                            "type": "AMAZON.StreetName"
+                        }
+                    ],
+                    "samples": [
+                        "Lösche den Termin zum {SubjectToDelete} am {DateToDelete}",
+                        "Lösche den Termin zum {SubjectToDelete}",
+                        "Lösche den Termin am {DateToDelete}",
+                        "Lösche einen Termin",
+                        "Lösche Termin {SubjectToDelete} in  {CityToDelete} Straße {StreetToDelete} am {DateToDelete} um {TimeToDelete} von  {PersonToDelete}",
+                        "Lösche Termin {SubjectToDelete} am  {DateToDelete} um {TimeToDelete}  in  {CityToDelete} Straße {StreetToDelete}  von {PersonToDelete}",
+                        "Lösche Termin {SubjectToDelete}  Datum {DateToDelete} Zeit {TimeToDelete} Person {PersonToDelete}",
+                        "Lösche Termin {SubjectToDelete} Stadt {CityToDelete} Person {PersonToDelete}",
+                        "Lösche Termin {SubjectToDelete} Stadt {CityToDelete} Straße {StreetToDelete} Datum {DateToDelete} Zeit {TimeToDelete} Person {PersonToDelete}",
+                        "Lösche Termin {SubjectToDelete} in {CityToDelete} von {PersonToDelete}",
+                        "Lösche Termin {SubjectToDelete}  in {CityToDelete} Straße {StreetToDelete} von {PersonToDelete}",
+                        "Lösche Termin {SubjectToDelete} Stadt {CityToDelete} Straße {StreetToDelete} Person {PersonToDelete}",
+                        "Lösche Termin {SubjectToDelete} am  {DateToDelete} um {TimeToDelete} von {PersonToDelete}"
+                    ]
+                },
+                {
+                    "name": "ChangeAppointmentIntent",
+                    "slots": [
+                        {
+                            "name": "Date",
+                            "type": "AMAZON.DATE",
+                            "samples": [
+                                "Der Termin ist am {Date}",
+                                "{Date}",
+                                "Am {Date}"
+                            ]
+                        },
+                        {
+                            "name": "Subject",
+                            "type": "AppointmentTypes",
+                            "samples": [
+                                "Ändere den Termin zum {Subject}",
+                                "zum {Subject}",
+                                "{Subject}"
+                            ]
+                        },
+                        {
+                            "name": "Time",
+                            "type": "AMAZON.TIME"
+                        },
+                        {
+                            "name": "City",
+                            "type": "AMAZON.DE_CITY"
+                        }
+                    ],
+                    "samples": [
+                        "Ändere den Termin zum {Subject} am {Date}",
+                        "Ändere den Termin in {City}",
+                        "Ändere den Termin am {Date} um {Time}",
+                        "Ändere den Termin zum {Subject}",
+                        "Ändere den Termin am {Date}",
+                        "Ändere einen Termin"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "AppointmentTypes",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "Geburtstag von Vater"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Geburtstag von Mutter"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Geburtstag von Bruder"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Geburtstag von Schwester"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Geburtstag von Cousine"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Geburtstag von Cousin"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Geburtstag von Enkel"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Geburtstag von Mann",
+                                "synonyms": [
+                                    "Geburtstag von Ehemann"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Geburtstag von Frau",
+                                "synonyms": [
+                                    "Geburtstag von Ehefrau"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Geburtstag von Sohn"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Geburtstag von Tochter"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Hausarzt",
+                                "synonyms": [
+                                    "Doktor"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Augenarzt"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Hautartz"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "Zahnarzt"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "DayBeforOrAfter",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "morgigen",
+                                "synonyms": [
+                                    "morgen",
+                                    "morgige"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "heutigen",
+                                "synonyms": [
+                                    "heute",
+                                    "heutige"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "PersonType",
+                    "values": [
+                        {
+                            "name": {
+                                "value": "mir",
+                                "synonyms": [
+                                    "ich"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "schwiegervater"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "schwiegermutter"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "schwägerin",
+                                "synonyms": [
+                                    "schwester von ehefrau",
+                                    "schwester von ehemann",
+                                    "schwester von mann",
+                                    "schwester von frau"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "schwager",
+                                "synonyms": [
+                                    "bruder von ehemann",
+                                    "bruder von mann",
+                                    "bruder von ehefrau",
+                                    "bruder von frau"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "mann",
+                                "synonyms": [
+                                    "ehemann"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "frau",
+                                "synonyms": [
+                                    "ehefrau"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "arzt",
+                                "synonyms": [
+                                    "doktor"
+                                ]
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "bruder"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "schwester"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "enkelin"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "enkel"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "sohn"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "tochter"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "tante"
+                            }
+                        },
+                        {
+                            "name": {
+                                "value": "onkel"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        "dialog": {
+            "intents": [
+                {
+                    "name": "SubmitAppointmentIntent",
+                    "delegationStrategy": "ALWAYS",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "Subject",
+                            "type": "AppointmentTypes",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.112473526175.487659024378"
+                            }
+                        },
+                        {
+                            "name": "Date",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.112473526175.1080295081661"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInDuration",
+                                    "prompt": "Slot.Validation.112473526175.1080295081661.1311580414528",
+                                    "start": "P0D",
+                                    "end": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Time",
+                            "type": "AMAZON.TIME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "City",
+                            "type": "AMAZON.DE_CITY",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "Street",
+                            "type": "AMAZON.StreetName",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "Person",
+                            "type": "PersonType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                },
+                {
+                    "name": "DeleteAppointmentHandler",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "SubjectToDelete",
+                            "type": "AppointmentTypes",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1490013476948.422799293903"
+                            }
+                        },
+                        {
+                            "name": "DateToDelete",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1490013476948.1473821465587"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInDuration",
+                                    "prompt": "Slot.Validation.1490013476948.1473821465587.1243029549914",
+                                    "start": "-P0D",
+                                    "end": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "TimeToDelete",
+                            "type": "AMAZON.TIME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "PersonToDelete",
+                            "type": "PersonType",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "CityToDelete",
+                            "type": "AMAZON.DE_CITY",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "StreetToDelete",
+                            "type": "AMAZON.StreetName",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                },
+                {
+                    "name": "ChangeAppointmentIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "Date",
+                            "type": "AMAZON.DATE",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.779623199858.686212973847"
+                            },
+                            "validations": [
+                                {
+                                    "type": "isInDuration",
+                                    "prompt": "Slot.Validation.779623199858.686212973847.483841716519",
+                                    "start": "P0D",
+                                    "end": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Subject",
+                            "type": "AppointmentTypes",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.779623199858.556521858638"
+                            }
+                        },
+                        {
+                            "name": "Time",
+                            "type": "AMAZON.TIME",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        },
+                        {
+                            "name": "City",
+                            "type": "AMAZON.DE_CITY",
+                            "confirmationRequired": false,
+                            "elicitationRequired": false,
+                            "prompts": {}
+                        }
+                    ]
+                },
+                {
+                    "name": "CreateNoteIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "Note",
+                            "type": "AMAZON.SearchQuery",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.129918498575.621479480423"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "delegationStrategy": "ALWAYS"
+        },
+        "prompts": [
+            {
+                "id": "Slot.Validation.112473526175.1080295081661.1311580414528",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Dieser Tag ist in der Vergangenheit Bitte gib einen anderen Tag an"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Bitte gib einen Tag in der Zukunft an"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.112473526175.487659024378",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Bitte gebe einen Betreff an"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.112473526175.1080295081661",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "An welchem Tag gehst du zum {Subject} "
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "An welchem Tag"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1490013476948.422799293903",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Welchen Termin möchtest du löschen"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.779623199858.686212973847",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "An welchem Tag ist dein Termin?"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "An welchem Tag"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.779623199858.556521858638",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "bitte gib den Betreff an"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.1490013476948.1473821465587",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "An welchem Tag"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Wann ist der Termin"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "An welchem Tag ist der Termin"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.1490013476948.1473821465587.1243029549914",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Bitte gib einen Termin in der Zukunft an"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "dieser Tag ist in der Vergangenheit, bitte gib einen anderen Termin an"
+                    }
+                ]
+            },
+            {
+                "id": "Slot.Validation.779623199858.686212973847.483841716519",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Bitte gib einen Termin in der Zukunft an"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Dieser Termin ist in der Vergangenheit, bitte gib einen anderen Termin an"
+                    }
+                ]
+            },
+            {
+                "id": "Elicit.Slot.129918498575.621479480423",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "fang an"
+                    },
+                    {
+                        "type": "PlainText",
+                        "value": "Mache Notiz"
+                    }
+                ]
+            }
+        ]
+    }
+}
